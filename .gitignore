@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+
+# Données et états d'exécution (jamais dans le dépôt)
+data/
+state.db
+state.db-*
+daemon.log*
+daemon.pid
+heartbeat.json
+found_wallets.*
+book.json
+book_exits.json
+hypertracker_state/
+logs/
+*.bak-*
+*.tmp
+
+# Secrets
+.env
+.env.*

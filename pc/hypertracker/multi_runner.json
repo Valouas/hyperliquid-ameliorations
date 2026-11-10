@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "comment": "Options du runner multi2. NE PAS mettre ces clés dans policies_multi/*.json (le hash de la politique est l'identité du checkpoint).",
+  "policy_dir": "policies_multi",
+  "state_dir": "hypertracker_state/multi",
+  "stress_state_dir": "hypertracker_state/multi_stress",
+  "shadow_state_dir": "hypertracker_state/multi_shadow",
+  "default_feed": "delayed",
+  "realtime": [
+    "a2e3",
+    "05c6",
+    "b989",
+    "0f4f",
+    "3de9",
+    "f838",
+    "dc52",
+    "2d42",
+    "679b",
+    "6944"
+  ],
+  "max_realtime_users": 10,
+  "shadow_delayed": [],
+  "books": {
+    "a2e3": {
+      "allow_hip3": false
+    },
+    "0f4f": {
+      "allow_hip3": false
+    },
+    "7ffb": {
+      "allow_hip3": false
+    },
+    "3de9": {
+      "allow_hip3": false
+    },
+    "ac14": {
+      "allow_hip3": false
+    },
+    "f838": {
+      "allow_hip3": false
+    },
+    "0fe2": {
+      "allow_hip3": false
+    },
+    "2215": {
+      "allow_hip3": false
+    },
+    "4270": {
+      "allow_hip3": false
+    },
+    "1f3a": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "2396": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "b81d": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "5165": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "e9ec": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "d238": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "7eac": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "1c6a": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "9b34": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "27a5": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "441c": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "67d4": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "11fb": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "c65a": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "8184": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "1609": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "79bf": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    },
+    "f36f": {
+      "allow_hip3": false,
+      "ghost": false,
+      "stress_latency_ms": 1500
+    }
+  },
+  "copy_latency_ms": 1500,
+  "stress_latency_ms": 1500,
+  "delayed_lag_seconds": 75,
+  "rest_budget_weight_per_min": 750,
+  "approx_extra_slippage_bps": 10,
+  "book_feed": "pending",
+  "hip3_defaults": {
+    "allowed_dexes": [
+      "xyz"
+    ],
+    "hip3_min_volume_24h": {
+      "xyz": 2000000
+    },
+    "hip3_pause_weekend": false
+  },
+  "comment_hip3": "HIP-3 (xyz) activé seulement pour les books où la simu 30j avec frais/glissement HIP-3 est meilleure (voir LISEZMOI_HIP3.md). Retirer allow_hip3 -> le book passe en sortie seule pour ses positions HIP-3.",
+  "engine_defaults": {
+    "equity_floor_median_mult": 0.5,
+    "leader_equity_move_guard_pct": 0.3,
+    "stop_exit_delay_s": 1.5,
+    "liquidation_model": true,
+    "cf_log": true
+  },
+  "ghosts": true,
+  "ghost_state_dir": "hypertracker_state/multi_ghost",
+  "placebos": true,
+  "placebo_policy_dir": "policies_placebo",
+  "placebo_state_dir": "hypertracker_state/multi_placebo",
+  "max_placebos": 5,
+  "cf_dir": "hypertracker_state/multi_cf",
+  "consensus_window_hours": 6,
+  "feed_lag_log": true,
+  "comment_validation": "2026-10-31 validation round: engine_defaults = per-book options (override in books.<prefix>), ghosts = 0 s units, placebos = random non-chosen wallets (seed 20261031, see placebo_wallets.json). Policy files untouched.",
+  "comment_stress": "2026-11-07: unites stress 3 s retirees (stress_latency_ms global = copy_latency_ms => aucune unite stress). Valeur precedente 3000.",
+  "max_books_same_coin_side": 5,
+  "max_portfolio_coin_side_notional": null,
+  "comment_1110": "2026-11-10 ameliorations selection: (1) HIP-3 coupe partout (allow_hip3 false; les copies HIP-3 ouvertes passent en sortie seule) jusqu'a preuve hors echantillon; (2) max_books_same_coin_side 5: pas de NOUVELLE entree tant que 5 autres books tiennent deja le meme coin dans le meme sens (seuil provisoire, null = coupe); (3) books.<prefixe>.mode = probation (seul le fantome trade) | retired (sorties seules), voir tools/probation_report.py et tools/apply_exits.py; (4) max_placebos reste a 5: le poids REST estime est deja 745/min pour un budget de 750, chaque placebo coute ~7,5/min. Liberer du budget (books retires a plat -> enabled false, ou wallets temps reel passes en differe) avant de l'augmenter (max 20)."
+}
